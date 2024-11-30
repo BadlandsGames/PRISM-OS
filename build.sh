@@ -3,6 +3,7 @@
 mkdir prism
 mkdir prism/boot
 mkdir prism/boot/grub
+mkdir prism/boot/fs
 mkdir assembly_line
 mkdir assembly_line/packages
 mkdir assembly_line/bsd
@@ -29,7 +30,10 @@ cat >/prism/boot/init.sh <<EOL
 pwsh ./startup.ps1
 
 if [[ $? -ne 0 ]]; then
+    apk add bash
     apk add powershell
+    apk add dpkg
+    apk add apt
     pwsh ./startup.ps1
 fi
 ...
