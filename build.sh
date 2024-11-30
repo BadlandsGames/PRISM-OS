@@ -16,6 +16,7 @@ set timeout=0
 menuentry "PRISM OS" {
     set root='(hd96)'
     multiboot /boot/kernel.bin
+    init=/boot/init.sh
 }
 ...
 EOL
