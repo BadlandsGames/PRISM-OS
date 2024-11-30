@@ -7,6 +7,28 @@
 #include <SDL2/SDL_ttf.h>
 using namespace std;
 
+int getWidth() {
+    string result = exec("xrandr | grep '*' | awk '{print $1}'");
+    string::size_type x_pos = result.find('x');
+    if (x_pos != string::npos) {
+        string width_str = result.substr(0, x_pos);
+        return stoi(width_str);
+    } else {
+        throw runtime_error("Failed to parse resolution width.");
+    }
+}
+
+int getHeight() {
+    string result = exec("xrandr | grep '*' | awk '{print $1}'"); 
+    string::size_type x_pos = result.find('x');
+    if (x_pos != string::npos) {
+        string height_str = result.substr(x_pos + 1);
+        return stoi(height_str);
+    } else {
+        throw runtime_error("Failed to parse resolution height.");
+    }
+}
+
 string exec(const char* cmd) {
     array<char, 128> buffer;
     string result;
