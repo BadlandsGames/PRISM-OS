@@ -17,7 +17,7 @@ menuentry "PRISM OS" {
     set root='(hd96)'
     multiboot /boot/kernel.bin
 }
-... 
+...
 EOL
 
 git clone https://git.freebsd.org/src.git
