@@ -34,6 +34,20 @@ if [[ $? -ne 0 ]]; then
     apk add powershell
     apk add dpkg
     apk add apt
+    apk add flatpak
+    flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak --user install com.valvesoftware.Steam
+    flatpak --user install com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
+    mkdir /steam_compatdata/
+    export STEAM_COMPAT_DATA_PATH="/steam_compatdata/"
+    export WINEPREFIX="$STEAM_COMPAT_DATA_PATH/pfx"
+    cd /.steam/steam/steamapps/common
+    latest_proton=$(ls -d Proton* | sort -V | tail -n 1)
+    cd ..
+    cd ..
+    cd ..
+    cd ..
+    export PROTON_FOLDER_PRISM="/.steam/steam/steamapps/common/$latest_proton"
     pwsh ./startup.ps1
 fi
 ...
@@ -41,6 +55,16 @@ EOL
 
 cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
+
+function RunExeViaProton {
+    param (
+        [string]$File
+    )
+    eval "$PROTON_FOLDER_PRISM/proton run $File"
+}
+
+RunExeViaProton -File "file.exe"
+
 ...
 EOL
 
