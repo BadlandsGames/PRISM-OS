@@ -49,7 +49,8 @@ mv *.ko ../assembly_line/packages/
 cd ..
 
 cd musl
-make *.so ../assembly_line/packages/
+make
+mv *.so ../assembly_line/packages/
 cd ..
 
 for file in ./assembly_line/packages*.so; do
