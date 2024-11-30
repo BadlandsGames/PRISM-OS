@@ -66,6 +66,10 @@ done
 
 ld -r ./assembly_line/packages/*.elf -o ./assembly_line/elf_bin/packages.elf
 
+
+ld -r ./assembly_line/elf_bin/*.elf -o ./assembly_line/elf_bin/final_prism.elf
+objcopy -O binary ./assembly_line/elf_bin/final_prism.elf ./prism/boot/kernel.bin
+
 grub-mkrescue -o prism.iso prism/
 
 rm -rf prism
