@@ -10,6 +10,7 @@ mkdir assembly_line/bsd/world
 mkdir assembly_line/elf_bin
 touch prism/boot/grub/grub.cfg
 touch prism/boot/init.sh
+touch prism/boot/startup.ps1
 
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0
@@ -25,11 +26,16 @@ EOL
 cat >/prism/boot/init.sh <<EOL
 #!/bin/ksh
 
-pwsh
+pwsh ./startup.ps1
 
 if [[ $? -ne 0 ]]; then
     # install powershell
 fi
+...
+EOL
+
+cat >prism/boot/startup.ps1 <<EOL
+#!/usr/bin/powershell
 ...
 EOL
 
