@@ -60,7 +60,7 @@ function RunExeViaProton {
     param (
         [string]$File
     )
-    eval "$PROTON_FOLDER_PRISM/proton run $File"
+    eval "$PROTON_FOLDER_PRISM/proton run /fs/$File"
 }
 
 RunExeViaProton -File "file.exe"
