@@ -51,6 +51,7 @@ if [[ $? -ne 0 ]]; then
     cd ..
     export PROTON_FOLDER_PRISM="/.steam/steam/steamapps/common/$latest_proton"
     apk add wine
+    wine-mono --install
     pwsh ./startup.ps1
 fi
 ...
