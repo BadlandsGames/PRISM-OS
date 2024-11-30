@@ -29,7 +29,8 @@ cat >/prism/boot/init.sh <<EOL
 pwsh ./startup.ps1
 
 if [[ $? -ne 0 ]]; then
-    # install powershell
+    apk add powershell
+    pwsh ./startup.ps1
 fi
 ...
 EOL
