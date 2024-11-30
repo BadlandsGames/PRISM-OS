@@ -71,7 +71,10 @@ ld -r ./assembly_line/elf_bin/*.elf -o ./assembly_line/elf_bin/final_prism.elf
 objcopy -O binary ./assembly_line/elf_bin/final_prism.elf ./prism/boot/kernel.bin
 
 grub-mkrescue -o prism.iso prism/
-
+dd prism.iso of=prism.img bs=4M
+zip -r prism.img.zip prism.img
+rm prism.iso
+rm prism.img
 rm -rf prism
 rm -rf freebsd-src
 rm -rf apk-tools
