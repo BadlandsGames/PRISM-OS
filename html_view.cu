@@ -7,7 +7,7 @@
 #include <SDL2/SDL_ttf.h>
 using namespace std;
 
-int getWidth() {
+int monitor_getWidth() {
     string result = exec("xrandr | grep '*' | awk '{print $1}'");
     string::size_type x_pos = result.find('x');
     if (x_pos != string::npos) {
@@ -18,7 +18,7 @@ int getWidth() {
     }
 }
 
-int getHeight() {
+int monitor_getHeight() {
     string result = exec("xrandr | grep '*' | awk '{print $1}'"); 
     string::size_type x_pos = result.find('x');
     if (x_pos != string::npos) {
