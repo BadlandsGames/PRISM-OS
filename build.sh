@@ -13,7 +13,9 @@ touch prism/boot/grub/grub.cfg
 touch prism/boot/init.sh
 touch prism/boot/startup.ps1
 
-nvcc -o gui.elf gui.cu
+nvcc -o prism/boot/html_view.elf html_view.cu
+
+./html_view.elf index.html index.ttf
 
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0

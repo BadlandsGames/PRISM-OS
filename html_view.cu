@@ -7,6 +7,20 @@
 #include <SDL2/SDL_ttf.h>
 using namespace std;
 
+string exec(const char* cmd) {
+    array<char, 128> buffer;
+    string result;
+    unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+    if(!pipe) {
+        throw runtime_error("popen() failed!");
+    }
+    while(fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr)
+    {
+        result += buffer.data();
+    }
+    return result; 
+}
+
 int monitor_getWidth() {
     string result = exec("xrandr | grep '*' | awk '{print $1}'");
     string::size_type x_pos = result.find('x');
@@ -27,20 +41,6 @@ int monitor_getHeight() {
     } else {
         throw runtime_error("Failed to parse resolution height.");
     }
-}
-
-string exec(const char* cmd) {
-    array<char, 128> buffer;
-    string result;
-    unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
-    if(!pipe) {
-        throw runtime_error("popen() failed!");
-    }
-    while(fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr)
-    {
-        result += buffer.data();
-    }
-    return result; 
 }
 
 string parseHTML(const char* filename) {

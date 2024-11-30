@@ -19,4 +19,12 @@ function RunExeViaWineMono {
     eval "wine-mono /fs/$File"
 }
 
-RunExeViaProton -File "hello.exe"
+function RenderHTMLFile {
+    param (
+        [string]$Page
+        [string]$Font
+    )
+    ./html_view.elf $Page $Font
+}
+
+RenderHTMLFile -Page "index.html" -Font "index.ttf"
