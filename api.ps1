@@ -12,4 +12,11 @@ function RunExeViaWine {
     eval "wine /fs/$File"
 }
 
+function RunExeViaWineMono {
+    param (
+        [string]$File
+    )
+    eval "wine-mono /fs/$File"
+}
+
 RunExeViaProton -File "hello.exe"
