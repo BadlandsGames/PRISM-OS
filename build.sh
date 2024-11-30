@@ -24,6 +24,12 @@ EOL
 
 cat >/prism/boot/init.sh <<EOL
 #!/bin/ksh
+
+pwsh
+
+if [[ $? -ne 0 ]]; then
+    # install powershell
+fi
 ...
 EOL
 
