@@ -23,7 +23,7 @@ menuentry "PRISM OS" {
 EOL
 
 cat >/prism/boot/init.sh <<EOL
-echo hi
+#!/bin/ksh
 ...
 EOL
 
