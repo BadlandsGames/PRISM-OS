@@ -6,6 +6,7 @@ mkdir prism/boot/grub
 mkdir assembly_line
 mkdir assembly_line/packages
 mkdir assembly_line/bsd
+mkdir assembly_line/bsd/world
 mkdir assembly_line/elf_bin
 touch prism/boot/grub/grub.cfg
 
@@ -30,8 +31,10 @@ cd freebsd-src
 ./config
 make world
 make kernel
-make installworld DESTDIR=../assembly_line/bsd
+make installworld DESTDIR=../assembly_line/bsd/world
 make installkernel DESTDIR=../assembly_line/bsd
+mv ../assembly_line/bsd/kernel ../assembly_line/elf_bin/kernel.elf
+mv ../assembly_line/bsd/world/* ../prism/boot/
 cd ..
 
 cd apk-tools
