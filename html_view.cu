@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
         SDL_Quit();
         return 1;
     }
-    SDL_Window* window = SDL_CreateWindow("SDL2 HTML Renderer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("SDL2 HTML Renderer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, monitor_getWidth(), monitor_getHeight(), SDL_WINDOW_SHOWN);
     if (!window) {
         cerr << "Failed to create window: " << SDL_GetError() << endl;
         TTF_Quit();
