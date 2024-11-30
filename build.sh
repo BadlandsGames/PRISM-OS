@@ -58,14 +58,7 @@ EOL
 cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
 
-function RunExeViaProton {
-    param (
-        [string]$File
-    )
-    eval "$PROTON_FOLDER_PRISM/proton run /fs/$File"
-}
-
-RunExeViaProton -File "file.exe"
+shutdown -h now
 
 ...
 EOL
