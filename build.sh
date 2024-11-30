@@ -9,6 +9,7 @@ mkdir assembly_line/bsd
 mkdir assembly_line/bsd/world
 mkdir assembly_line/elf_bin
 touch prism/boot/grub/grub.cfg
+touch prism/boot/init.sh
 
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0
@@ -18,6 +19,11 @@ menuentry "PRISM OS" {
     multiboot /boot/kernel.bin
     init=/boot/init.sh
 }
+...
+EOL
+
+cat >/prism/boot/init.sh <<EOL
+echo hi
 ...
 EOL
 
