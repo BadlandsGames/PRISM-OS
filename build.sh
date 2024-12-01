@@ -38,6 +38,10 @@ def kill_app():
     signal.signal(signal.SIGINT, signal_handler)
     webview.destroy_window(main_window)
 
+def shutdown_prism():
+    print("BEEF_SHUTDOWN_PRISM")
+    kill_app()
+
 def run_proton(path):
     os.system("cp -r fs/" + path + "* loaded/")
     print("BEEF_LAUNCHGAME_PRISM_PROTON")
