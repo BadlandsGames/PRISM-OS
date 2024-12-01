@@ -71,6 +71,11 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route('/function_called', methods=['POST'])
+def function_called():
+    data = request.get_json()
+    param = data.get('param')
+
 def create_window():
     app.run(debug=False, port=app_port)
     main_window = webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/', width=width, height=height)
