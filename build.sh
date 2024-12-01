@@ -49,7 +49,7 @@ EOL
 rm prism_gui.py
 
 pyinstaller --onefile prism_gui.py
-mv dist/prism_gui gui.elf
+mv dist/prism_gui prism/boot/gui.elf
 rm -rf dist
 
 cat >/prism/boot/grub/grub.cfg <<EOL
@@ -98,6 +98,8 @@ cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
 
 ./api.ps1
+
+./gui.elf
 
 shutdown -h now
 
