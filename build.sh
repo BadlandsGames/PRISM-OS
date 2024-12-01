@@ -153,6 +153,8 @@ EOL
 cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
 
+ubuntu-drivers autoinstall
+
 ./api.ps1
 
 $prism_running = $true
