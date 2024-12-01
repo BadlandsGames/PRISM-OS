@@ -74,6 +74,7 @@ if [[ $? -ne 0 ]]; then
     apk add dpkg
     apk add apt
     apk add flatpak
+    apk add libgcompat
     flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak --user install com.valvesoftware.Steam
     flatpak --user install com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
@@ -97,7 +98,32 @@ EOL
 cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
 
-./gui.elf
+./api.ps1
+
+$prism_running = $true
+
+while($prism_running) {
+    ./gui.elf
+    $output = Get-Process
+    if($output -Contains "BEEF_SHUTDOWN_PRISM") {
+        break
+    } elseif($output -Contains "BEEF_LAUNCHGAME_PRISM_PROTON") {
+        chmod +x /loaded/*
+        RunExeViaProton -File "/loaded/index.exe"
+    } elseif($output -Contains "BEEF_LAUNCHGAME_PRISM_WINE") {
+        chmod +x /loaded/*
+        RunExeViaWine -File "/loaded/index.exe"
+    } elseif($output -Contains "BEEF_LAUNCHGAME_PRISM_WINEMONO") {
+        chmod +x /loaded/*
+        RunExeViaWineMono -File "/loaded/index.exe"
+    } elseif($output -Contains "BEEF_LAUNCHGAME_PRISM_ELF") {
+        chmod +x /loaded/*
+        ./loaded/index.elf
+    } elseif($output -Contains "BEEF_LAUNCHGAME_PRISM_APPIMAGE") {
+        chmod +x /loaded/*
+        ./loaded/index.AppImage
+    }
+}
 
 shutdown -h now
 
