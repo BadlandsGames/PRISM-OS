@@ -15,8 +15,6 @@ touch prism/boot/startup.ps1
 
 nvcc -o prism/boot/html_view.elf html_view.cu
 
-./html_view.elf index.html index.ttf
-
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0
 set timeout=0
