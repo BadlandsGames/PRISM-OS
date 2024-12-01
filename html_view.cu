@@ -1,47 +1,4 @@
-#include <iostream>
-#include <memory>
-#include <stdexcept>
-#include <array>
-#include <libxml/HTMLparser.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-using namespace std;
-
-string exec(const char* cmd) {
-    array<char, 128> buffer;
-    string result;
-    unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
-    if(!pipe) {
-        throw runtime_error("popen() failed!");
-    }
-    while(fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr)
-    {
-        result += buffer.data();
-    }
-    return result; 
-}
-
-int monitor_getWidth() {
-    string result = exec("xrandr | grep '*' | awk '{print $1}'");
-    string::size_type x_pos = result.find('x');
-    if (x_pos != string::npos) {
-        string width_str = result.substr(0, x_pos);
-        return stoi(width_str);
-    } else {
-        throw runtime_error("Failed to parse resolution width.");
-    }
-}
-
-int monitor_getHeight() {
-    string result = exec("xrandr | grep '*' | awk '{print $1}'"); 
-    string::size_type x_pos = result.find('x');
-    if (x_pos != string::npos) {
-        string height_str = result.substr(x_pos + 1);
-        return stoi(height_str);
-    } else {
-        throw runtime_error("Failed to parse resolution height.");
-    }
-}
+#include "shared.hpp"
 
 string parseHTML(const char* filename) {
     LIBXML_TEST_VERSION
@@ -113,7 +70,10 @@ int main(int argc, char* argv[]) {
     }
     bool running = true;
     SDL_Event event;
-    while (running) {
+    if(running) {
+        thread nodejs_server(eval, "node index.js");
+    }
+    while(running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 running = false;
@@ -123,6 +83,9 @@ int main(int argc, char* argv[]) {
         SDL_RenderClear(renderer);
         renderText(textContent, renderer, font);
         SDL_RenderPresent(renderer);
+    }
+    if(!running) {
+        nodejs_server.join();
     }
     TTF_CloseFont(font);
     SDL_DestroyRenderer(renderer);
