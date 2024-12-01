@@ -70,9 +70,6 @@ int main(int argc, char* argv[]) {
     }
     bool running = true;
     SDL_Event event;
-    if(running) {
-        thread nodejs_server(eval, "node index.js");
-    }
     while(running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -83,9 +80,6 @@ int main(int argc, char* argv[]) {
         SDL_RenderClear(renderer);
         renderText(textContent, renderer, font);
         SDL_RenderPresent(renderer);
-    }
-    if(!running) {
-        nodejs_server.join();
     }
     TTF_CloseFont(font);
     SDL_DestroyRenderer(renderer);
