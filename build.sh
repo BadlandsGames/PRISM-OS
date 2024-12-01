@@ -97,8 +97,6 @@ EOL
 cat >prism/boot/startup.ps1 <<EOL
 #!/usr/bin/powershell
 
-./api.ps1
-
 ./gui.elf
 
 shutdown -h now
