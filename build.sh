@@ -14,6 +14,44 @@ touch prism/boot/init.sh
 touch prism/boot/startup.ps1
 touch prism/boot/api.ps1
 
+touch prism_gui.py
+cat >prism_gui.py <<EOL
+from flask import *
+import webview
+import pyautogui
+import random
+import signal
+import sys
+
+width = pyautogui.size()[0]
+height = pyautogui.size()[1]
+
+def signal_handler(signal, frame):
+    sys.exit(0)
+
+app_port = random.randint(1000, 9999)
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template("")
+
+app.run(debug=False, port=app_port)
+
+webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/index.html', width=width, height=height)
+
+webview.start()
+
+signal.signal(signal.SIGINT, signal_handler)
+...
+EOL
+rm prism_gui.py
+
+pyinstaller --onefile prism_gui.py
+mv dist/prism_gui gui.elf
+rm -rf dist
+
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0
 set timeout=0
