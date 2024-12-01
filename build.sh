@@ -22,6 +22,7 @@ import pyautogui
 import random
 import signal
 import sys
+import os
 
 width = pyautogui.size()[0]
 height = pyautogui.size()[1]
