@@ -6,15 +6,17 @@
     </head>
     <body onload="loadDashboard()">
         <script>
-            function talkFlask(param) {
+            function talkFlask(param, param2) {
                 fetch('/function_called', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ functionName: 'talkFlask', param: param})
+                    body: JSON.stringify({ functionName: 'talkFlask', param: param, param2: param2})
                 }).then(response => response.text()).then(data => console.log(data));
             }
+            function shutdown_prism() {
+                talkFlask("shutdown_prism");
+            }
             function loadDashboard() {
-                talkFlask("run_proton");
             }
         </script>
     </body>
