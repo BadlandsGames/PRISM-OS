@@ -78,7 +78,7 @@ def home():
 @app.route('/function_called', methods=['POST'])
 def function_called():
     data = request.get_json()
-    param = str(data.get('param')) + "()"
+    param = str(data.get('param')) + "(" + str(data.get('param2')) + ")"
     eval(param)
 
 def create_window():
