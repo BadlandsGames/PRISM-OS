@@ -9,6 +9,7 @@ mkdir assembly_line/packages
 mkdir assembly_line/bsd
 mkdir assembly_line/bsd/world
 mkdir assembly_line/elf_bin
+mkdir prism/boot/loaded
 touch prism/boot/grub/grub.cfg
 touch prism/boot/init.sh
 touch prism/boot/startup.ps1
@@ -18,6 +19,7 @@ touch prism_gui.py
 cat >prism_gui.py <<EOL
 from flask import *
 import webview
+import thread
 import pyautogui
 import random
 import signal
@@ -27,8 +29,39 @@ import os
 width = pyautogui.size()[0]
 height = pyautogui.size()[1]
 
+main_window = None
+
 def signal_handler(signal, frame):
     sys.exit(0)
+
+def kill_app():
+    signal.signal(signal.SIGINT, signal_handler)
+    webview.destroy_window(main_window)
+
+def run_proton(path):
+    os.system("cp -r fs/" + path + "* loaded/")
+    print("BEEF_LAUNCHGAME_PRISM_PROTON")
+    kill_app()
+
+def run_wine(path):
+    os.system("cp -r fs/" + path + "* loaded/")
+    print("BEEF_LAUNCHGAME_PRISM_WINE")
+    kill_app()
+
+def run_winemono(path):
+    os.system("cp -r fs/" + path + "* loaded/")
+    print("BEEF_LAUNCHGAME_PRISM_WINEMONO")
+    kill_app()
+
+def run_elf(path):
+    os.system("cp -r fs/" + path + "* loaded/")
+    print("BEEF_LAUNCHGAME_PRISM_ELF")
+    kill_app()
+
+def run_appimage(path):
+    os.system("cp -r fs/" + path + "* loaded/")
+    print("BEEF_LAUNCHGAME_PRISM_APPIMAGE")
+    kill_app()
 
 app_port = random.randint(1000, 9999)
 
@@ -38,20 +71,25 @@ app = Flask(__name__)
 def home():
     return render_template("")
 
-app.run(debug=False, port=app_port)
+def create_window():
+    app.run(debug=False, port=app_port)
+    main_window = webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/', width=width, height=height)
 
-webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/', width=width, height=height)
+def main_app():
+    app_thread = = threading.Thread(target=create_window)
+    thread.start()
+    webview.start()
 
-webview.start()
+os.system("sudo systemctl restart")
 
-signal.signal(signal.SIGINT, signal_handler)
 ...
 EOL
-rm prism_gui.py
 
 pyinstaller --onefile prism_gui.py
 mv dist/prism_gui prism/boot/gui.elf
 rm -rf dist
+
+rm prism_gui.py
 
 cat >/prism/boot/grub/grub.cfg <<EOL
 set default=0
