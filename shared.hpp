@@ -10,7 +10,7 @@
 #include <SDL2/SDL_ttf.h>
 using namespace std;
 
-string exec(const char* cmd) {
+string exec_cmd(const char* cmd) {
     array<char, 128> buffer;
     string result;
     unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
@@ -25,7 +25,7 @@ string exec(const char* cmd) {
 }
 
 int monitor_getWidth() {
-    string result = exec("xrandr | grep '*' | awk '{print $1}'");
+    string result = exec_cmd("xrandr | grep '*' | awk '{print $1}'");
     string::size_type x_pos = result.find('x');
     if (x_pos != string::npos) {
         string width_str = result.substr(0, x_pos);
@@ -36,7 +36,7 @@ int monitor_getWidth() {
 }
 
 int monitor_getHeight() {
-    string result = exec("xrandr | grep '*' | awk '{print $1}'"); 
+    string result = exec_cmd("xrandr | grep '*' | awk '{print $1}'"); 
     string::size_type x_pos = result.find('x');
     if (x_pos != string::npos) {
         string height_str = result.substr(x_pos + 1);
