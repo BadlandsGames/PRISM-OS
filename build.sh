@@ -69,7 +69,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template("")
+    return render_template("index.html")
 
 def create_window():
     app.run(debug=False, port=app_port)

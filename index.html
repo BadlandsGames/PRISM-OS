@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body onload="loadDashboard()">
+        <script>
+            function talkFlask(param) {
+                fetch('/function_called', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ functionName: 'talkFlask', param: param})
+                }).then(response => response.text()).then(data => console.log(data));
+            }
+            function loadDashboard() {
+            }
+        </script>
+    </body>
+</html>
