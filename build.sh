@@ -39,7 +39,7 @@ def home():
 
 app.run(debug=False, port=app_port)
 
-webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/index.html', width=width, height=height)
+webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/', width=width, height=height)
 
 webview.start()
 
