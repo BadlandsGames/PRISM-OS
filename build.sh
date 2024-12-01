@@ -15,6 +15,11 @@ touch prism/boot/init.sh
 touch prism/boot/startup.ps1
 touch prism/boot/api.ps1
 
+mkdir prism/boot/fs/steamapps
+mkdir prism/boot/fs/exe
+mkdir prism/boot/fs/elf
+mkdir prism/boot/fs/appimage
+
 touch prism_gui.py
 cat >prism_gui.py <<EOL
 from flask import *
