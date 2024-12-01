@@ -14,7 +14,22 @@
                 }).then(response => response.text()).then(data => console.log(data));
             }
             function shutdown_prism() {
-                talkFlask("shutdown_prism");
+                talkFlask("shutdown_prism", "");
+            }
+            function run_proton(path) {
+                talkFlask("run_proton", path);
+            }
+            function run_wine(path) {
+                talkFlask("run_wine", path);
+            }
+            function run_winemono(path) {
+                talkFlask("run_winemono", path);
+            }
+            function run_elf(path) {
+                talkFlask("run_elf", path);
+            }
+            function run_appimage(path) {
+                talkFlask("run_appimage", path);
             }
             function loadDashboard() {
             }
