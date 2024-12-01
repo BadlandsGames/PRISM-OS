@@ -76,7 +76,7 @@ def create_window():
     main_window = webview.create_window('View GUI', 'http://localhost:' + str(app_port) + '/', width=width, height=height)
 
 def main_app():
-    app_thread = = threading.Thread(target=create_window)
+    app_thread = threading.Thread(target=create_window)
     thread.start()
     webview.start()
 
