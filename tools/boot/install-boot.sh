@@ -451,3 +451,19 @@ mbr2=${srcroot}/boot/boot
 if [ -n "${dev}" ]; then
 	eval boot_${geli}_${scheme}_${fs}_${bios} $dev $srcroot $opts || echo "Unsupported boot env: ${geli}-${scheme}-${fs}-${bios}"
 fi
+
+pkg update
+pkgin install busybox
+pkg update
+
+pkg update
+pkg install toybox
+pkg update
+
+pkg update
+pkg install bash coreutils jq
+pkg update
+
+pkg update
+pkg install meson ninja
+pkg update
