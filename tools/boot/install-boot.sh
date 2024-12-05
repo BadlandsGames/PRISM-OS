@@ -483,4 +483,6 @@ rm -r apk-tools
 pkg update
 
 apk update && pkg update
-apk update && pkg update
+apk add dpkg
+apk add apt
+apk update && pkg update && apt update
