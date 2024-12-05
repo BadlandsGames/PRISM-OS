@@ -467,3 +467,17 @@ pkg update
 pkg update
 pkg install meson ninja
 pkg update
+
+pkg update
+pkg install wget git
+pkg update
+
+pkg update
+git clone https://github.com/alpinelinux/apk-tools
+cd apk-tools
+meson setup -Dprefix=/ build
+ninja -C build
+meson install -C build
+cd ..
+rm -r apk-tools
+pkg update
