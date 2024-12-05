@@ -35,11 +35,19 @@
 using namespace std;
 
 static void update(void) __dead2;
+static void usage(void) __dead2;
 
 static void update(void) {
     system("apk update && pkg update && apt update");
     system("ubuntu-drivers autoinstall");
     system("apk update && pkg update && apt update");
+}
+
+static void usage(void) {
+    cout << (
+        "" << endl <<
+        ""
+    );
 }
 
 int main(int argc, char *argv[]) {
