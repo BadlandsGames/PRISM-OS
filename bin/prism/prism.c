@@ -1,8 +1,3 @@
-/*
-apk update && pkg update && apt update
-ubuntu-drivers autoinstall
-apk update && pkg update && apt update
-*/
 #include <sys/types.h>
 #include <sys/param.h>
 #include <sys/sysctl.h>
@@ -36,21 +31,14 @@ apk update && pkg update && apt update
 #include "bltin/bltin.h"
 #endif
 
-static void usage(void) __dead2;
+static void update(void) __dead2;
+
+static void update(void) {
+    system("apk update && pkg update && apt update");
+    system("ubuntu-drivers autoinstall");
+    system("apk update && pkg update && apt update");
+}
 
 int main(int argc, char *argv[]) {
     return 0;
-}
-
-static void usage(void) {
-	(void)fprintf(stderr, "%s\n%s\n%s\n%s\n",
-		"usage: kill [-s signal_name] pid ...",
-		"       kill -l [exit_status]",
-		"       kill -signal_name pid ...",
-		"       kill -signal_number pid ...");
-#ifdef SHELL
-	error(NULL);
-#else
-	exit(2);
-#endif
 }
