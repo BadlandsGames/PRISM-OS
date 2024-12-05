@@ -49,7 +49,7 @@ static void usage(void) {
     cout << (
         "usage: prism" << endl <<
         << newtab_cout << "prism update" << endl <<
-        << newtab_cout << "prism update" << endl <<
+        << newtab_cout << "prism restart" << endl <<
         << newtab_cout << "prism update"
     );
 }
