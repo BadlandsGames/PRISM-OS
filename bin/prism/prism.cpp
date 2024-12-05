@@ -78,18 +78,53 @@ static void toybox(string cmd) {
 static void usage(void) {
     cout << (
         "usage: prism" << endl <<
-        << newtab_cout << "prism update" << endl <<
-        << newtab_cout << "prism restart" << endl <<
-        << newtab_cout << "prism update"
+        << newtab_cout << "--update" << endl <<
+        << newtab_cout << "--restart <service>" << endl <<
+        << newtab_cout << "--busybox <cmd>" << endl <<
+        << newtab_cout << "--toybox <cmd>"
     );
 }
 
 int main(int argc, char *argv[]) {
-    if (!strcmp(*argv, "-s")) {
+    if(!strcmp(*argv, "--update")) {
+		argc--, argv++;
+		if (argc < 1) {
+			update();
+		}
+        if(strcmp(*argv, "0")) {
+			usage();
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--restart")) {
 		argc--, argv++;
 		if (argc < 1) {
 			usage();
 		}
+        if(strcmp(*argv, "0")) {
+			restart(*argv);
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--busybox")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			busybox(*argv);
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--toybox")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			toybox(*argv);
+		}
+        argc--, argv++;
     }
     return 0;
 }
