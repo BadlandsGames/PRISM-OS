@@ -37,7 +37,9 @@ using namespace std;
 #define newtab_cout (" " << " " << " " << " ")
 
 static void update(void) __dead2;
-static void restart(void) __dead2;
+static void restart(string service_to_restart) __dead2;
+static void busybox(string cmd) __dead2;
+static void toybox(string cmd) __dead2;
 
 static void usage(void) __dead2;
 
@@ -54,7 +56,23 @@ static void restart(string service_to_restart) {
     newcmd.append(service_to_restart);
     newcmd.append(" ");
     newcmd.append("restart");
-    system("service "" restart");
+    system(newcmd);
+}
+
+static void busybox(string cmd) {
+    string newcmd = "";
+    newcmd.append("busybox");
+    newcmd.append(" ");
+    newcmd.append(cmd);
+    system(newcmd);
+}
+
+static void toybox(string cmd) {
+    string newcmd = "";
+    newcmd.append("toybox");
+    newcmd.append(" ");
+    newcmd.append(cmd);
+    system(newcmd);
 }
 
 static void usage(void) {
