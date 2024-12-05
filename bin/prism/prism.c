@@ -19,6 +19,7 @@ apk update && pkg update && apt update
 static void usage(void) __dead2;
 
 int main(int argc, char *argv[]) {
+    return 0;
 }
 
 static void usage(void) {
