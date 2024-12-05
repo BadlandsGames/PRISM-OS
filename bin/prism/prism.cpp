@@ -85,5 +85,11 @@ static void usage(void) {
 }
 
 int main(int argc, char *argv[]) {
+    if (!strcmp(*argv, "-s")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+    }
     return 0;
 }
