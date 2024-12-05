@@ -37,6 +37,8 @@ using namespace std;
 #define newtab_cout (" " << " " << " " << " ")
 
 static void update(void) __dead2;
+static void restart(void) __dead2;
+
 static void usage(void) __dead2;
 
 static void update(void) {
@@ -45,6 +47,17 @@ static void update(void) {
     system("apk update && pkg update && apt update && apt upgrade");
 }
 
+static void restart(string service_to_restart) {
+    string newcmd = "";
+    newcmd.append("service");
+    newcmd.append(" ");
+    newcmd.append(service_to_restart);
+    newcmd.append(" ");
+    newcmd.append("restart");
+    system("service "" restart");
+}
+
+// service netif restart
 static void usage(void) {
     cout << (
         "usage: prism" << endl <<
