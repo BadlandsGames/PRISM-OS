@@ -485,4 +485,5 @@ pkg update
 apk update && pkg update
 apk add dpkg
 apk add apt
+apt install ubuntu-drivers-common
 apk update && pkg update && apt update
