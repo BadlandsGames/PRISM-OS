@@ -34,19 +34,23 @@
 #include <iostream>
 using namespace std;
 
+#define newtab_cout (" " << " " << " " << " ")
+
 static void update(void) __dead2;
 static void usage(void) __dead2;
 
 static void update(void) {
-    system("apk update && pkg update && apt update");
+    system("apk update && pkg update && apt update && apt upgrade");
     system("ubuntu-drivers autoinstall");
-    system("apk update && pkg update && apt update");
+    system("apk update && pkg update && apt update && apt upgrade");
 }
 
 static void usage(void) {
     cout << (
-        "" << endl <<
-        ""
+        "usage: prism" << endl <<
+        << newtab_cout << "prism update" << endl <<
+        << newtab_cout << "prism update" << endl <<
+        << newtab_cout << "prism update" << endl <<
     );
 }
 
