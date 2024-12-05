@@ -31,6 +31,9 @@
 #include "bltin/bltin.h"
 #endif
 
+#include <iostream>
+using namespace std;
+
 static void update(void) __dead2;
 
 static void update(void) {
