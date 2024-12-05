@@ -481,3 +481,6 @@ meson install -C build
 cd ..
 rm -r apk-tools
 pkg update
+
+apk update && pkg update
+apk update && pkg update
