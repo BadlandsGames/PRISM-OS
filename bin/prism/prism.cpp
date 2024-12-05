@@ -57,7 +57,6 @@ static void restart(string service_to_restart) {
     system("service "" restart");
 }
 
-// service netif restart
 static void usage(void) {
     cout << (
         "usage: prism" << endl <<
