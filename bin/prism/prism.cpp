@@ -50,7 +50,7 @@ static void usage(void) {
         "usage: prism" << endl <<
         << newtab_cout << "prism update" << endl <<
         << newtab_cout << "prism update" << endl <<
-        << newtab_cout << "prism update" << endl <<
+        << newtab_cout << "prism update"
     );
 }
 
