@@ -490,5 +490,6 @@ apk update && pkg update && apt update
 
 apk update && pkg update && apt update
 apt install snapd
+apt install tcsh
 snap install powershell
 apk update && pkg update && apt update
