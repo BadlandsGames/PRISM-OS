@@ -26,4 +26,4 @@ def main(folder):
     menuloop(newfldr)
     if newfldr.endswith("/"):
         newfldr = newfldr[:-1]
-    os.system("psmapp --execute " + newfldr + "/" + chosen_index)
+    os.system("psmapp --execute " + newfldr + "/" + chosen_index.split(", ")[1])
