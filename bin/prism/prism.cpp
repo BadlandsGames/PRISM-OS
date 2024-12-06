@@ -75,6 +75,14 @@ static void toybox(string cmd) {
     system(newcmd);
 }
 
+static void install_android(string path) {
+    string newcmd = "";
+    newcmd.append("apk add --allow-untrusted");
+    newcmd.append(" ");
+    newcmd.append(path);
+    system(newcmd);
+}
+
 static void usage(void) {
     cout << (
         "usage: prism" << endl <<
