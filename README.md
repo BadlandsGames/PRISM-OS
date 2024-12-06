@@ -1,4 +1,5 @@
-# PRISM OS:
+<img src="drawing.jpg" alt="drawing" width="200"/>
+<hr>
 
 ### Filesystem:
 PRISM OS uses the <code>HAMMER</code> filesystem, which brings amazing speed without requiring a Host Bus Adapter.
