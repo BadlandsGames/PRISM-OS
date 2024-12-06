@@ -183,5 +183,15 @@ int main(int argc, char *argv[]) {
 		}
         argc--, argv++;
     }
+    else if(!strcmp(*argv, "--help")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			usage();
+		}
+        argc--, argv++;
+    }
     return 0;
 }
