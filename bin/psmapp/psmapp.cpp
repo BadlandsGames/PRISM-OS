@@ -35,12 +35,21 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
+    string newcmd = "";
     if(!strcmp(*argv, "--package")) {
 		argc--, argv++;
 		if (argc < 1) {
             cout << "error: folder required." << endl;
 		}
         if(strcmp(*argv, "0")) {
+            newcmd.append("zip");
+            newcmd.append(" ");
+            newcmd.append(*argv);
+            newcmd.append(".zip");
+            newcmd.append(" ");
+            newcmd.append(*argv);
+            newcmd.append("/*");
+            system(newcmd);
 		}
         argc--, argv++;
     } else if(!strcmp(*argv, "--execute")) {
