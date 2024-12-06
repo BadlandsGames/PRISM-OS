@@ -469,7 +469,7 @@ pkg install meson ninja
 pkg update
 
 pkg update
-pkg install wget git
+pkg install wget git zip
 pkg update
 
 pkg update
