@@ -487,3 +487,8 @@ apk add dpkg
 apk add apt
 apt install ubuntu-drivers-common
 apk update && pkg update && apt update
+
+apk update && pkg update && apt update
+apt install snapd
+snap install powershell
+apk update && pkg update && apt update
