@@ -41,6 +41,10 @@ static void restart(string service_to_restart) __dead2;
 static void busybox(string cmd) __dead2;
 static void toybox(string cmd) __dead2;
 
+static void install_android(string path) __dead2;
+static void install_debian(string path) __dead2;
+static void install_pkg(string path) __dead2;
+
 static void usage(void) __dead2;
 
 static void update(void) {
