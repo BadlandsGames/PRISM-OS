@@ -43,8 +43,19 @@ extern void run_psmapp(string filename_in);
 
 #define __USE_INDEX_ELF__
 
-extern void main_py(void);
+extern void main_py(string folder);
 
 int main(int argc, char *argv[]) {
-    main_py();
+    if(!strcmp(*argv, "--folder")) {
+		argc--, argv++;
+		if (argc < 1) {
+            main_py("~/");
+		}
+        if(strcmp(*argv, "0")) {
+            main_py(argv*);
+		}
+        argc--, argv++;
+    } else {
+        main_py("~/");
+    }
 }
