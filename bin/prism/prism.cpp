@@ -48,7 +48,7 @@ static void install_pkg(string path) __dead2;
 static void usage(void) __dead2;
 
 static void update(void) {
-    system("apk update && pkg update && apt update && apt upgrade");
+    system("apk update && pkg update && apt update -y && apt upgrade -y");
     system("ubuntu-drivers autoinstall");
     system("apk update && pkg update && apt update -y && apt upgrade -y");
 }
