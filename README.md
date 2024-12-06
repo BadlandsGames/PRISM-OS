@@ -1,4 +1,4 @@
-<img src="drawing.jpg" alt="drawing" width="200"/>
+<img src="prism.png" alt="prism logo" style="width: 100%;"/>
 <hr>
 
 ### Filesystem:
