@@ -501,3 +501,6 @@ make install
 cd ..
 rm -r freebsd_hammer2
 apk update && pkg update && apt update -y
+
+cd ~
+mkdir prismfs
