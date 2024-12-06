@@ -486,10 +486,18 @@ apk update && pkg update
 apk add dpkg
 apk add apt
 apt install ubuntu-drivers-common
-apk update && pkg update && apt update
+apk update && pkg update && apt update -y
 
-apk update && pkg update && apt update
+apk update && pkg update && apt update -y
 apt install snapd
 apt install tcsh
 snap install powershell
-apk update && pkg update && apt update
+apk update && pkg update && apt update -y
+
+apk update && pkg update && apt update -y
+git clone https://github.com/kusumi/freebsd_hammer2
+cd freebsd_hammer2
+make install
+cd ..
+rm -r freebsd_hammer2
+apk update && pkg update && apt update -y
