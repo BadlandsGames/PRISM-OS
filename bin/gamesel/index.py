@@ -21,7 +21,7 @@ def menuloop(folder):
     menu_entry_index = terminal_menu.show()
     chosen_index = str(files_list[menu_entry_index])
 
-def main(folder):
+def main_py(folder):
     newfldr = folder
     menuloop(newfldr)
     if newfldr.endswith("/"):
