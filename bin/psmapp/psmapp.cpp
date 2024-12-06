@@ -40,6 +40,7 @@ int main(int argc, char *argv[]) {
 		argc--, argv++;
 		if (argc < 1) {
             cout << "error: folder required." << endl;
+            cout << "Please refrain from using " << '"' << '/' << '"' << " when naming folder." << endl;
 		}
         if(strcmp(*argv, "0")) {
             newcmd.append("zip");
