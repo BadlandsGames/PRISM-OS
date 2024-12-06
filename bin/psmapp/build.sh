@@ -1,3 +1,5 @@
+pyinstaller --onefile index.py
+mv index index.elf
 git clone https://github.com/m8/elf-to-c-header.git
 cd elf-to-c-header
 g++ elf-to-c-header.cpp -o ../elf-to-c-header.elf
