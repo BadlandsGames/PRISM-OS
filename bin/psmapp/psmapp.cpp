@@ -43,4 +43,17 @@ extern void run_psmapp(string filename_in);
 
 #define __USE_INDEX_ELF__
 
-int main(int argc, char *argv[]) {}
+int main(int argc, char *argv[]) {
+    if(!strcmp(*argv, "--execute")) {
+		argc--, argv++;
+		if (argc < 1) {
+            cout << "filename required: *.zip" << endl;
+		}
+        if(strcmp(*argv, "0")) {
+            run_psmapp(argv*);
+		}
+        argc--, argv++;
+    } else {
+        cout << "filename required: *.zip" << endl;
+    }
+}
