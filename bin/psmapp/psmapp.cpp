@@ -1,3 +1,3 @@
 #ifndef __USE_INDEX_ELF__
-#include "index.elf"
+#include "index.h"
 #endif
