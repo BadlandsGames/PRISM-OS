@@ -49,13 +49,13 @@ int main(int argc, char *argv[]) {
     if(!strcmp(*argv, "--folder")) {
 		argc--, argv++;
 		if (argc < 1) {
-            main_py("~/");
+            main_py("~/prismfs/");
 		}
         if(strcmp(*argv, "0")) {
             main_py(argv*);
 		}
         argc--, argv++;
     } else {
-        main_py("~/");
+        main_py("~/prismfs/");
     }
 }
