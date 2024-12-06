@@ -10,13 +10,13 @@ def menuloop(folder):
     for root, directories, files in os.walk(folder):
         for name in files:
             process = subprocess.Popen(
-                ['unzip', '-q', '-p', os.path.join(root, name), 'tempname.txt', '|', 'cat'],
+                ['unzip', '-q', '-p', os.path.join(root, name), 'app.json', '|', 'cat'],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True)
             stdout = json.loads(process.communicate())["name"]
             files_list.append(stdout + ", " + os.path.join(root, name))
-            os.system("rm tempname.txt")
+            os.system("rm app.json")
     terminal_menu = TerminalMenu(files_list)
     menu_entry_index = terminal_menu.show()
     chosen_index = str(files_list[menu_entry_index])
