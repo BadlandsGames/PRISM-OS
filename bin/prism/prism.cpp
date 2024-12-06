@@ -83,13 +83,32 @@ static void install_android(string path) {
     system(newcmd);
 }
 
+static void install_debian(string path) {
+    string newcmd = "";
+    newcmd.append("dpkg -i");
+    newcmd.append(" ");
+    newcmd.append(path);
+    system(newcmd);
+}
+
+static void install_pkg(string path) {
+    string newcmd = "";
+    newcmd.append("pkg add");
+    newcmd.append(" ");
+    newcmd.append(path);
+    system(newcmd);
+}
+
 static void usage(void) {
     cout << (
         "usage: prism" << endl <<
-        << newtab_cout << "--update" << endl <<
-        << newtab_cout << "--restart <service>" << endl <<
-        << newtab_cout << "--busybox <cmd>" << endl <<
-        << newtab_cout << "--toybox <cmd>"
+        newtab_cout << "--update" << endl <<
+        newtab_cout << "--restart <service>" << endl <<
+        newtab_cout << "--install-android <path>" << endl <<
+        newtab_cout << "--install-debian <path>" << endl <<
+        newtab_cout << "--install-pkg <path>" << endl <<
+        newtab_cout << "--busybox <cmd>" << endl <<
+        newtab_cout << "--toybox <cmd>"
     );
 }
 
@@ -101,6 +120,36 @@ int main(int argc, char *argv[]) {
 		}
         if(strcmp(*argv, "0")) {
 			usage();
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--install-android")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			install_android(*argv);
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--install-debian")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			install_debian(*argv);
+		}
+        argc--, argv++;
+    }
+    else if(!strcmp(*argv, "--install-pkg")) {
+		argc--, argv++;
+		if (argc < 1) {
+			usage();
+		}
+        if(strcmp(*argv, "0")) {
+			install_pkg(*argv);
 		}
         argc--, argv++;
     }
