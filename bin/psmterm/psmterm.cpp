@@ -32,15 +32,17 @@
 #endif
 
 int main(int argc, char *argv[]) {
-    string newcmd = "sudo pwsh";
+    string newcmd = "sudo tcsh -c 'sudo pwsh";
     if(!strcmp(*argv, "--script")) {
 		argc--, argv++;
 		if (argc < 1) {
+            newcmd.append("'");
 			system(newcmd);
 		}
         if(strcmp(*argv, "0")) {
             newcmd.append(" ");
             newcmd.append(*argv);
+            newcmd.append("'");
 			system(newcmd);
 		}
         argc--, argv++;
