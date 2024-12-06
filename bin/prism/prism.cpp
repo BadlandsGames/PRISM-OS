@@ -50,7 +50,7 @@ static void usage(void) __dead2;
 static void update(void) {
     system("apk update && pkg update && apt update && apt upgrade");
     system("ubuntu-drivers autoinstall");
-    system("apk update && pkg update && apt update && apt upgrade");
+    system("apk update && pkg update && apt update -y && apt upgrade -y");
 }
 
 static void restart(string service_to_restart) {
