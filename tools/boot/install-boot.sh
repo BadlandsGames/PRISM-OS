@@ -452,6 +452,8 @@ if [ -n "${dev}" ]; then
 	eval boot_${geli}_${scheme}_${fs}_${bios} $dev $srcroot $opts || echo "Unsupported boot env: ${geli}-${scheme}-${fs}-${bios}"
 fi
 
+cd ~
+
 pkg update
 pkgin install busybox
 pkg update
@@ -502,5 +504,4 @@ cd ..
 rm -r freebsd_hammer2
 apk update && pkg update && apt update -y
 
-cd ~
 mkdir prismfs
