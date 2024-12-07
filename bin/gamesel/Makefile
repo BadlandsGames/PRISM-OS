@@ -1,5 +1,5 @@
 PACKAGE=runtime
-PROG=	psmterm
+PROG=	gamesel
 
 run-script: build.sh
 
